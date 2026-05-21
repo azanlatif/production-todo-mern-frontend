@@ -1,0 +1,184 @@
+/* ─── Design Variables ─── */
+:root {
+    --text-main: #111827;
+    --text-muted: #4b5563;
+    --bg-surface: #ffffff;
+    --border-element: #e5e7eb;
+    --primary-blue: #2563eb;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ─── Layout Wrappers ─── */
+.filter-wrapper {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-element);
+    font-family: var(--font-sans);
+}
+
+.filter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-container h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-group {
+    flex-shrink: 0;
+}
+
+/* ─── Select Input styling ─── */
+.form-select {
+    padding: 8px 36px 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234b5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ─── Cards View Layout Grid ─── */
+.todo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: var(--font-sans);
+    box-sizing: border-box;
+}
+
+.todo-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* ─── Individual Cards ─── */
+.task-card {
+    background: #ffffff;
+    border: 1px solid var(--border-element);
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 160px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 9999px;
+}
+
+.status-badge.completed {
+    background-color: #f0fdf4;
+    color: #16a34a;
+}
+
+.status-badge.incomplete {
+    background-color: #fff7ed;
+    color: #ea580c;
+}
+
+.task-card-date {
+    font-size: 12px;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.task-card-body {
+    flex: 1;
+}
+
+.task-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.task-card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ─── Empty Placeholder Style ─── */
+.no-task-wrapper {
+    text-align: center;
+    padding: 5rem 1rem;
+    color: var(--text-muted);
+}
+
+.no-task {
+    font-size: 1.75rem;
+    color: var(--text-main);
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+}
+
+/* ─── Mobile Responsiveness ─── */
+@media (max-width: 640px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .form-select {
+        width: 100%;
+    }
+
+    .todo-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .todo-card-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

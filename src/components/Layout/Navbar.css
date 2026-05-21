@@ -1,0 +1,166 @@
+/* ─── Design System Variables ─── */
+:root {
+    --nav-bg: #ffffff;
+    --nav-border: #e5e7eb;
+    --text-dark: #111827;
+    --text-link: #4b5563;
+    --text-link-hover: #111827;
+    --logout-hover-bg: #fef2f2;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ─── Base Navbar Layout ─── */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    padding: 0.75rem 2rem;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: var(--font-sans);
+    box-sizing: border-box;
+}
+
+/* ─── Left Side (User Welcome) ─── */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.nav-left svg {
+    font-size: 18px;
+    color: var(--text-dark);
+}
+
+/* ─── Right Side Navigation Links ─── */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: var(--text-link);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 6px 4px;
+}
+
+.nav-right a:hover {
+    color: var(--text-link-hover);
+}
+
+/* ─── Logout Interactive Button ─── */
+.nav-logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.nav-logout-btn:hover {
+    background-color: var(--logout-hover-bg);
+}
+
+.nav-logout-btn:active {
+    transform: scale(0.95);
+}
+
+/* ─── Hamburger Mobile Trigger ─── */
+.hamburger-btn {
+    display: none;
+    /* Hidden on desktop screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-dark);
+    padding: 6px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-btn:hover {
+    background-color: #f3f4f6;
+}
+
+/* ─── Mobile View Transformations ─── */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        /* Trigger slide out menu safely at 840px */
+    }
+
+    /* Converts panel layout to overlay slide-down block drawer */
+    .nav-right {
+        position: absolute;
+        top: 64px;
+        /* Matches navbar height perfectly */
+        left: 0;
+        width: 100%;
+        background-color: var(--nav-bg);
+        border-bottom: 1px solid var(--nav-border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 0;
+
+        /* Interactive Toggle Visibility Management Animations */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Active open toggle modifier selector state rule */
+    .nav-right.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Expanding individual text routes onto native mobile column row blocks */
+    .nav-right a {
+        font-size: 15px;
+        padding: 12px 1.5rem;
+        border-radius: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-right a:hover {
+        background-color: #f9fafb;
+    }
+
+    /* Formatting row structure alignments for standard exit actions */
+    .nav-logout-btn {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 12px 1.5rem;
+        border-radius: 0;
+    }
+
+    .nav-logout-btn:hover {
+        background-color: var(--logout-hover-bg);
+    }
+}

@@ -1,0 +1,164 @@
+/* ─── Design Variables ─── */
+:root {
+    --bg-surface: #ffffff;
+    --bg-app: #f9fafb;
+    --brand-primary: #111827;
+    --brand-hover: #374151;
+    --accent-blue: #2563eb;
+    --accent-focus: rgba(37, 99, 235, 0.15);
+    --border-color: #e5e7eb;
+    --input-border: #d1d5db;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+}
+
+/* ─── Layout Container ─── */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-app);
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* ─── Card Core Style ─── */
+.form {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05),
+        0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ─── Structural Fixes ─── */
+.form>div {
+    width: 100%;
+}
+
+.form-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* ─── Avatar / Icon ─── */
+.login-icon {
+    font-size: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--brand-primary);
+    margin: 0 auto 0.5rem auto;
+}
+
+/* ─── Form Fields ─── */
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--input-border);
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text-main);
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px var(--accent-focus);
+}
+
+/* ─── Action Button ─── */
+.login-btn {
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-btn:hover {
+    background-color: var(--brand-hover);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* ─── Navigation Links ─── */
+.link-register {
+    font-size: 14px;
+    text-align: center;
+    color: var(--text-muted);
+    margin: 0;
+    order: 2;
+    /* Moves the link text beneath the action button */
+}
+
+.link-register a {
+    text-decoration: none;
+}
+
+.link-register span {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.link-register span:hover {
+    text-decoration: underline;
+}
+
+/* ─── Small Screen Optimization (Mobile) ─── */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1rem;
+        align-items: center;
+        /* Keeps card centered vertically on mobile */
+    }
+
+    .form {
+        padding: 2rem 1.5rem;
+        border-radius: 14px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .login-icon {
+        font-size: 64px;
+    }
+
+    .input {
+        padding: 14px;
+        font-size: 16px;
+        /* Absolute standard to prevent iOS zoom-on-focus */
+    }
+
+    .login-btn {
+        height: 50px;
+        font-size: 16px;
+    }
+}
