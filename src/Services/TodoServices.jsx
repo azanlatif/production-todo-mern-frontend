@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const BaseUrl = import.meta.env.VITE_BASEURL || '';
+const BaseUrl = (import.meta.env.VITE_BASEURL || '').replace(/\/$/, '');
 
 //get user token 
 const user = JSON.parse(localStorage.getItem('todo_token'))
